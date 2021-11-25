@@ -1,4 +1,5 @@
 const { Kafka } = require('kafkajs')
+const avro = require('avsc')
 
 const kafka = new Kafka({
   clientId: 'my-app',
@@ -7,14 +8,21 @@ const kafka = new Kafka({
 
 const consumer = async () => {
     const consumer = kafka.consumer({ groupId: 'test-group' })
-
+    const type = avro.Type.forSchema({
+        type: 'record',
+        fields: [
+          {name: 'kind', type: {type: 'enum', symbols: ['CAT', 'DOG', 'PET']}},
+          {name: 'name', type: 'string'}
+        ]
+      });
+      
     await consumer.connect()
-    await consumer.subscribe({ topic: 'test-topic', fromBeginning: true })
+    await consumer.subscribe({ topic: 'animals', fromBeginning: true })
 
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {
             console.log({
-            value: message.value.toString(),
+            value: type.fromBuffer(message.value)
             })
         },
     })
