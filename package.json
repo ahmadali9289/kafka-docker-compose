@@ -1,0 +1,15 @@
+{
+  "name": "kafka-docker",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <a href=\"\" rel=\"noopener\">\r  <img width=200px height=200px src=\"https://svn.apache.org/repos/asf/kafka/site/logos/originals/png/TALL%20-%20White%20on%20Transparent.png\" alt=\"Kafka logo\"></a>\r </p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^1.15.0"
+  }
+}
