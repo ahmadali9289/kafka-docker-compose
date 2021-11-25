@@ -30,3 +30,6 @@ For using the pre-build utility programs of kafka, you need to exec into kafka i
 docker-compose exec kafka ssh
 ```
 
+### Exec into Kafka cluster
+
+Data serialization is controlled by avro package which produces data after serializing it. It is better and faster than JSON and can really increase the through put of messages because of reduced size.
